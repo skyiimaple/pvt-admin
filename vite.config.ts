@@ -17,6 +17,7 @@ export default defineConfig({
     tailwindcss(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
+      dts: './src/auto-imports.d.ts',
     }),
     Components({
       resolvers: [ElementPlusResolver()],

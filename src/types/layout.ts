@@ -21,4 +21,10 @@ export interface LayoutConfig {
   isFullscreen: boolean
   isCollapse: boolean
   theme: Theme
+  // 侧边栏宽度
+  sidebarWidth: number
+  // 侧边栏是否固定
+  sidebarFixed: boolean
+  // 侧边栏是否显示
+  sidebarShow: boolean
 }

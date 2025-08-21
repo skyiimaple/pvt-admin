@@ -1,5 +1,5 @@
 <template>
-  <div class="control-view">
+  <div class="the-control">
     <!-- 首页 -->
     <router-link to="/" title="首页">
       <el-button text>
@@ -32,7 +32,7 @@ function handleFullscreen() {
 </script>
 
 <style lang="scss" scoped>
-.control-view {
+.the-control {
   display: flex;
   align-items: center;
   height: 100%;

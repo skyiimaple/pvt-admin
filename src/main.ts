@@ -4,12 +4,12 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 import '@/styles/index.css'
-import { registerIcons } from '@/utils/common'
+import { registerElementPlus } from '@/utils/common'
 
 const app = createApp(App)
 
 app.use(createPinia().use(piniaPluginPersistedstate))
 app.use(router)
 //注册图标
-registerIcons(app)
+registerElementPlus(app)
 app.mount('#app')

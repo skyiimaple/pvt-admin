@@ -1,13 +1,5 @@
 <template>
-  <component :is="currentComponent">
-    <router-view v-slot="{ Component }">
-      <template v-if="Component">
-        <transition name="slide-top" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </template>
-    </router-view>
-  </component>
+  <component :is="currentComponent"> </component>
 </template>
 
 <script setup lang="ts">

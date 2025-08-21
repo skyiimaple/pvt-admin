@@ -11,6 +11,13 @@ export const useConfigStore = defineStore(
       isFullscreen: false,
       isCollapse: false,
       theme: ThemeEnum.LIGHT,
+
+      // 侧边栏宽度
+      sidebarWidth: 260,
+      // 侧边栏是否固定
+      sidebarFixed: true,
+      // 侧边栏是否显示
+      sidebarShow: true,
     })
 
     function setFullscreen(isFullscreen: boolean) {
@@ -26,10 +33,31 @@ export const useConfigStore = defineStore(
     }
 
     function setIsCollapse(isCollapse: boolean) {
+      if (isCollapse) {
+        setSidebarWidth(64)
+      } else {
+        setSidebarWidth(260)
+      }
       layout.isCollapse = isCollapse
     }
 
-    return { layout, setFullscreen, setTheme, setLayoutMode, setIsCollapse }
+    function setSidebarWidth(sidebarWidth: number) {
+      layout.sidebarWidth = sidebarWidth
+    }
+
+    function setSidebarFixed(sidebarFixed: boolean) {
+      layout.sidebarFixed = sidebarFixed
+    }
+
+    return {
+      layout,
+      setFullscreen,
+      setTheme,
+      setLayoutMode,
+      setIsCollapse,
+      setSidebarWidth,
+      setSidebarFixed,
+    }
   },
   {
     persist: {

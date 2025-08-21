@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import AppIcon from '@/components/app-icon.vue'
-import { type FormInstance } from 'element-plus'
+import { ElMessage, type FormInstance } from 'element-plus'
 import { useRouter } from 'vue-router'
 // import { login } from '@/api/common'
 
@@ -90,6 +90,9 @@ const handleLogin = async () => {
         console.log(err)
         ElMessage.error('登录失败')
         form.password = ''
+      })
+      .finally(() => {
+        loading.value = false
       })
   }
 }

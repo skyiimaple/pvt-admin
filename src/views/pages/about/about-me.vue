@@ -1,5 +1,5 @@
 <template>
-  <div>🚀Welcome to menu page!</div>
+  <div>🚀Welcome to about-me page!</div>
 </template>
 
 <script setup lang="ts"></script>

@@ -11,6 +11,7 @@ export const useConfigStore = defineStore(
       isFullscreen: false,
       isCollapse: false,
       theme: ThemeEnum.LIGHT,
+      currentMenu: '',
 
       // 侧边栏宽度
       sidebarWidth: 260,

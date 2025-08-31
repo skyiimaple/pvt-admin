@@ -13,7 +13,7 @@
 import { useConfigStore } from '@/stores/config'
 import { LayoutEnum } from '@/types/layout'
 import TheMenu from '@/layouts/components/the-menu.vue'
-import TheLogo from '@/layouts/components/logo-view.vue'
+import TheLogo from '@/layouts/components/the-logo.vue'
 
 const configStore = useConfigStore()
 </script>

@@ -10,3 +10,8 @@ export interface Menu {
   from?: string
   children?: Menu[]
 }
+
+
+export interface TabMenu extends Menu {
+  preActive: string
+}

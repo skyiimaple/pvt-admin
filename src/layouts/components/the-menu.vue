@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    default-active="2"
+    :default-active="menuStore.activeMenu"
     :collapse="configStore.layout.isCollapse"
     :collapse-transition="false"
     class="tw:border-r-0!"

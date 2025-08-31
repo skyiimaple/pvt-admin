@@ -51,6 +51,7 @@ import { reactive, ref } from 'vue'
 import AppIcon from '@/components/app-icon.vue'
 import { ElMessage, type FormInstance } from 'element-plus'
 import { useRouter } from 'vue-router'
+import http from '@/core/http'
 // import { login } from '@/api/common'
 
 const router = useRouter()
@@ -70,26 +71,17 @@ const loading = ref(false)
 const handleLogin = async () => {
   const result = await formRef.value?.validate()
   if (result) {
+    const formData = new FormData()
+    formData.append('username', form.username)
+    formData.append('password', form.password)
     loading.value = true
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (form.username === 'admin' && form.password === '123456') {
-          resolve('登录成功')
-        } else {
-          reject('登录失败')
-        }
-      }, 800)
-    })
+    http
+      .post('/api/auth/login', formData)
       .then((res) => {
-        console.log(res)
+        console.log('login', res)
         ElMessage.success('登录成功')
         loading.value = false
         router.push({ name: 'home' })
-      })
-      .catch((err) => {
-        console.log(err)
-        ElMessage.error('登录失败')
-        form.password = ''
       })
       .finally(() => {
         loading.value = false

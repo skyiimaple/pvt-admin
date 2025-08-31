@@ -67,7 +67,11 @@ export const useMenuStore = defineStore(
     const setMenus = (menuList: Menu[]) => {
       menus.value = menuList
     }
-    return { menus, setMenus }
+    const activeMenu = ref('')
+    const setActiveMenu = (menu: Menu) => {
+      activeMenu.value = menu.id
+    }
+    return { menus, setMenus, activeMenu, setActiveMenu }
   },
   {
     persist: { key: STORE_MENUS },

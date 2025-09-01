@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import TheTab from '@/layouts/components/the-tab.vue'
-import TheControl from '@/layouts/components/the-control.vue'
+import TheControl from '@/layouts/components/the-control/the-control.vue'
 </script>
 
 <style lang="scss" scoped></style>

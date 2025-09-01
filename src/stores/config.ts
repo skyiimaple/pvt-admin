@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
-import { LayoutEnum, ThemeEnum, type LayoutConfig, type Theme } from '@/types/layout'
+import { LayoutEnum, ThemeEnum, type Layout, type LayoutConfig, type Theme } from '@/types/layout'
 import { STORE_CONFIG } from './constants/cache-key'
 
 export const useConfigStore = defineStore(
@@ -29,7 +29,7 @@ export const useConfigStore = defineStore(
       layout.theme = theme
     }
 
-    function setLayoutMode(layoutMode: LayoutEnum) {
+    function setLayoutMode(layoutMode: Layout) {
       layout.layoutMode = layoutMode
     }
 

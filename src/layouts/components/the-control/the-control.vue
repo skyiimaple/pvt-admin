@@ -9,25 +9,33 @@
     <!-- 控制面板 -->
     <!-- TODO -->
     <!-- 全屏 -->
-    <el-button text title="全屏">
-      <app-icon name="el-FullScreen" @click="handleFullscreen"></app-icon>
+    <el-button text title="全屏" @click="handleFullscreen">
+      <app-icon name="el-FullScreen"></app-icon>
     </el-button>
     <!-- 头像 -->
     <!-- // TODO -->
     <!-- 设置 -->
-    <el-button text title="设置">
+    <el-button text title="设置" @click="handleSetting">
       <app-icon name="el-Setting"></app-icon>
     </el-button>
   </div>
+  <part-setting-drawer v-if="settingDrawer" v-model:visible="settingDrawer" />
 </template>
 
 <script setup lang="ts">
 import { useConfigStore } from '@/stores/config'
 import AppIcon from '@/components/app-icon.vue'
+import { ref } from 'vue'
+import PartSettingDrawer from './part-setting.drawer.vue'
 const configStore = useConfigStore()
 
 function handleFullscreen() {
   configStore.setFullscreen(!configStore.layout.isFullscreen)
+}
+
+const settingDrawer = ref(false)
+const handleSetting = () => {
+  settingDrawer.value = true
 }
 </script>
 

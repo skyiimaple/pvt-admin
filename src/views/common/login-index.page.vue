@@ -1,13 +1,9 @@
 <template>
-  <div class="tw:h-3/5 tw:flex tw:justify-center-safe tw:items-center">
+  <div class="tw:h-full tw:flex tw:justify-center-safe tw:items-center">
     <div class="login-container">
-      <el-avatar
-        :size="70"
-        src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-      >
-        <app-icon name="el-User" />
-      </el-avatar>
-      <el-divider />
+      <div class="tw:pb-10">
+        <img src="@/assets/image/fly.svg" alt="logo" />
+      </div>
       <el-form
         size="large"
         :model="form"
@@ -92,13 +88,22 @@ const handleLogin = async () => {
 
 <style lang="scss" scoped>
 .login-container {
+  box-sizing: content-box;
   width: 450px;
-  padding: 24px;
+  padding: 64px;
   height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  img {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+    transition: all 0.3s ease-in-out;
+  }
 }
 </style>

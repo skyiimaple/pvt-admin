@@ -13,6 +13,21 @@ export const useTabStore = defineStore(
     }
     const menuStore = useMenuStore()
     const addTab = (route: RouteLocationNormalized) => {
+      // 当跳转页面为404 且没有打开过404页面时 需要忘tabs 增加一个404tab
+      if (route.path.includes('404') && tabs.value.findIndex((item) => item.name === '404') < 0) {
+        const name = (route.name as string) || '404'
+        tabs.value.push({
+          id: name,
+          path: route.path,
+          name: name,
+          meta: {
+            title: name,
+            icon: name,
+          },
+          preActive: '',
+        })
+        return
+      }
       if (route.name) {
         if (tabs.value.find((item) => item.name === route.name)) {
           return

@@ -51,7 +51,7 @@ function handleCollapse() {
   }
   .logo-text {
     display: block;
-    width: 170px;
+    width: 174px;
     padding-left: 4px;
     font-size: var(--el-font-size-extra-large);
     font-weight: 600;

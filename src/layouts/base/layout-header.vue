@@ -2,8 +2,8 @@
   <el-header :class="'layout-header ' + configStore.getClassByModule('layout-header')">
     <the-tab v-if="showTab"></the-tab>
     <template v-else>
-      <div class="layout-header-logo" :style="{ width: asideWidth }">
-        <the-logo></the-logo>
+      <div class="layout-header-logo">
+        <the-logo :show-fold="false"></the-logo>
       </div>
       <!-- <div class="tw:flex-1"> -->
       <the-menu :mode="mode"></the-menu>
@@ -29,10 +29,6 @@ const showTab = computed(() =>
   [LayoutEnum.DEFAULT, LayoutEnum.CLASSIC].includes(configStore.layout.layoutMode as LayoutEnum),
 )
 const mode = computed(() => (showTab.value ? 'vertical' : 'horizontal'))
-
-const asideWidth = computed(() => {
-  return configStore.layout.sidebarWidth + 'px'
-})
 </script>
 
 <style lang="scss" scoped>

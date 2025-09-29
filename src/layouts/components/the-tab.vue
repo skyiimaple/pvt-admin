@@ -1,32 +1,29 @@
 <template>
   <div class="tw:flex tw:items-center tw:h-full the-tab-container">
-    <div
+    <el-tag
       v-for="item in tabStore.tabs"
-      class="the-tab"
-      :class="{ active: item.isActive, [configStore.getClassByModule('the-tab')]: true }"
-      :key="item.id"
+      :key="item.name"
+      :type="item.isActive ? 'primary' : 'info'"
+      closable
+      size="large"
+      :color="
+        !item.isActive && configStore.layout.layoutMode === LayoutEnum.CLASSIC ? '#fff' : undefined
+      "
+      :class="'the-tab ' + configStore.getClassByModule('the-tab')"
       @click="handleClick(item)"
+      @close="tabStore.removeTab(item)"
     >
-      <div class="tab-title">{{ item.meta.title }}</div>
-
-      <app-icon
-        v-show="tabStore.tabs.length > 1"
-        class="tw:ml-1.5"
-        name="el-Close"
-        size="16"
-        :color="item.isActive ? 'var(--el-color-primary)' : 'var(--el-color-text-2)'"
-        @click.stop="tabStore.removeTab(item)"
-      ></app-icon>
-    </div>
+      {{ item.meta.title }}
+    </el-tag>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useTabStore } from '@/stores/tab'
-import AppIcon from '@/components/app-icon.vue'
 import type { Menu } from '@/types/menus/menu'
 import { useRouter } from 'vue-router'
 import { useConfigStore } from '@/stores/config'
+import { LayoutEnum } from '@/types/layout'
 const router = useRouter()
 const tabStore = useTabStore()
 const configStore = useConfigStore()
@@ -41,42 +38,21 @@ const handleClick = (item: Menu) => {
 .the-tab-container {
   .the-tab {
     height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
+    font-size: 14px;
     cursor: pointer;
-
-    &:hover {
-      .tab-title {
-        color: var(--el-color-primary);
-      }
-    }
     &-default {
       height: 40px;
-      padding: 4px 16px;
       border-radius: 8px;
       & + .the-tab {
         margin-left: 4px;
       }
-      color: var(--el-text-color-secondary);
-      background: var(--el-fill-color-lighter);
-      &.active {
-        color: var(--el-color-primary);
-        background: var(--el-bg-color);
-      }
     }
     &-classic {
-      &.active {
-        color: var(--el-color-primary);
-        background-color: var(--el-bg-color-page);
-      }
+      border: 0;
+      border-radius: 0;
     }
-
-    .tab-title {
-      max-width: 120px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    &:hover {
+      color: var(--el-color-primary);
     }
   }
 }

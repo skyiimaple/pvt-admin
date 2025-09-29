@@ -1,10 +1,10 @@
 <template>
-  <div class="layout-logo">
+  <div :class="'layout-logo ' + configStore.getClassByModule('layout-logo')">
     <div class="tw:flex tw:items-center" v-if="!configStore.layout.isCollapse">
       <img class="logo-img" src="@/assets/logo.png" alt="logo" />
       <div class="logo-text">PVT Admin</div>
     </div>
-    <el-button @click="handleCollapse" circle>
+    <el-button @click="handleCollapse" circle v-if="showFold">
       <app-icon
         :name="'el-' + (configStore.layout.isCollapse ? 'Expand' : 'Fold')"
         color="var(--el-color-primary)"
@@ -16,6 +16,14 @@
 <script setup lang="ts">
 import AppIcon from '@/components/app-icon.vue'
 import { useConfigStore } from '@/stores/config'
+withDefaults(
+  defineProps<{
+    showFold?: boolean
+  }>(),
+  {
+    showFold: true,
+  },
+)
 const configStore = useConfigStore()
 function handleCollapse() {
   configStore.setIsCollapse(!configStore.layout.isCollapse)
@@ -24,7 +32,7 @@ function handleCollapse() {
 
 <style lang="scss" scoped>
 .layout-logo {
-  height: 60px;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -32,6 +40,10 @@ function handleCollapse() {
   box-sizing: border-box;
   padding: 10px;
   background-color: var(--el-fill-color-extra-light);
+  &-line,
+  &-double {
+    background: var(--el-bg-color);
+  }
   .logo-img {
     font-size: 18px;
     height: 34px;
@@ -39,7 +51,7 @@ function handleCollapse() {
   }
   .logo-text {
     display: block;
-    width: 180px;
+    width: 170px;
     padding-left: 4px;
     font-size: var(--el-font-size-extra-large);
     font-weight: 600;

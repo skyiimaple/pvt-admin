@@ -1,5 +1,5 @@
 <template>
-  <div class="the-control">
+  <div class="the-control tw:h-full">
     <!-- 首页 -->
     <router-link to="/" title="首页">
       <el-button text>
@@ -12,6 +12,7 @@
     <el-button text title="全屏" @click="handleFullscreen">
       <app-icon name="el-FullScreen"></app-icon>
     </el-button>
+    <div></div>
     <!-- 头像 -->
     <!-- // TODO -->
     <!-- 设置 -->
@@ -41,10 +42,13 @@ const handleSetting = () => {
 
 <style lang="scss" scoped>
 .the-control {
+  background: var(--el-bg-color);
   display: flex;
   align-items: center;
   height: 100%;
   margin-left: auto;
+  padding: 4px 8px;
+  border-radius: 8px;
   // background-color: #f5f5f5;
   .el-button {
     &:hover {

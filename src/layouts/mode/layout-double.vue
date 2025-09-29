@@ -1,10 +1,8 @@
 <template>
-  <el-container class="tw:w-full tw:h-full">
-    <layout-aside></layout-aside>
+  <el-container direction="vertical" class="tw:w-full tw:h-full">
+    <layout-header></layout-header>
     <el-container>
-      <el-header>
-        <layout-header></layout-header>
-      </el-header>
+      <layout-aside></layout-aside>
       <layout-main>
         <slot></slot>
       </layout-main>

@@ -50,6 +50,10 @@ export const useConfigStore = defineStore(
       layout.sidebarFixed = sidebarFixed
     }
 
+    function getClassByModule(moduleName: string) {
+      return moduleName + '-' + layout.layoutMode.toLocaleLowerCase()
+    }
+
     return {
       layout,
       setFullscreen,
@@ -58,6 +62,7 @@ export const useConfigStore = defineStore(
       setIsCollapse,
       setSidebarWidth,
       setSidebarFixed,
+      getClassByModule,
     }
   },
   {

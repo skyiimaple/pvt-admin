@@ -5,7 +5,7 @@
       <el-radio-group v-model="layout">
         <el-radio :label="LayoutEnum.DEFAULT">默认</el-radio>
         <el-radio :label="LayoutEnum.CLASSIC">经典</el-radio>
-        <el-radio :label="LayoutEnum.DOUBLE">双栏</el-radio>
+        <!-- <el-radio :label="LayoutEnum.DOUBLE">双栏</el-radio> -->
         <el-radio :label="LayoutEnum.LINE">单栏</el-radio>
       </el-radio-group>
     </div>

@@ -1,9 +1,10 @@
 <template>
   <el-menu
     :default-active="menuStore.activeMenu"
-    :collapse="configStore.layout.isCollapse"
+    :collapse="mode === 'vertical' ? configStore.layout.isCollapse : false"
     :collapse-transition="false"
-    class="tw:border-r-0!"
+    :mode="mode"
+    class="tw:border-r-0! tw:w-full"
   >
     <template v-for="item in menuStore.menus" :key="item.id">
       <el-sub-menu :index="item.id" v-if="item.children?.length">
@@ -36,6 +37,12 @@ import { useMenuStore } from '@/stores/menu'
 import type { Menu } from '@/types/menus/menu'
 import AppIcon from '@/components/app-icon.vue'
 import { useRouter } from 'vue-router'
+interface MenuProps {
+  mode?: 'horizontal' | 'vertical'
+}
+withDefaults(defineProps<MenuProps>(), {
+  mode: 'vertical',
+})
 const configStore = useConfigStore()
 const menuStore = useMenuStore()
 const router = useRouter()

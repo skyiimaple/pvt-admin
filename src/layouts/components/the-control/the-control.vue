@@ -9,7 +9,7 @@
     <!-- 控制面板 -->
     <!-- TODO -->
     <!-- 全屏 -->
-    <el-button text title="全屏" @click="handleFullscreen">
+    <el-button text title="全屏" v-screen>
       <app-icon name="el-FullScreen"></app-icon>
     </el-button>
     <div></div>
@@ -24,15 +24,11 @@
 </template>
 
 <script setup lang="ts">
-import { useConfigStore } from '@/stores/config'
+// import { useConfigStore } from '@/stores/config'
 import AppIcon from '@/components/app-icon.vue'
 import { ref } from 'vue'
 import PartSettingDrawer from './part-setting.drawer.vue'
-const configStore = useConfigStore()
-
-function handleFullscreen() {
-  configStore.setFullscreen(!configStore.layout.isFullscreen)
-}
+// const configStore = useConfigStore()
 
 const settingDrawer = ref(false)
 const handleSetting = () => {

@@ -4,12 +4,12 @@
       v-for="item in tabStore.tabs"
       :key="item.name"
       :type="item.isActive ? 'primary' : 'info'"
-      closable
+      :closable="tabStore.tabs.length > 1"
       size="large"
       :color="
         !item.isActive && configStore.layout.layoutMode === LayoutEnum.CLASSIC ? '#fff' : undefined
       "
-      :class="'the-tab ' + configStore.getClassByModule('the-tab')"
+      :class="['the-tab', configStore.getClassByModule('the-tab')]"
       @click="handleClick(item)"
       @close="tabStore.removeTab(item)"
     >

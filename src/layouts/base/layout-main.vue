@@ -1,5 +1,5 @@
 <template>
-  <el-main :class="'layout-main ' + configStore.getClassByModule('layout-main')">
+  <el-main :class="['layout-main', configStore.getClassByModule('layout-main')]">
     <div class="tw:w-full tw:h-full tw:overflow-auto tw:bg-white tw:rounded-md">
       <router-view></router-view>
     </div>

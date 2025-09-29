@@ -1,7 +1,7 @@
 <template>
   <el-aside
     :width="asideWidth"
-    :class="'layout-aside ' + configStore.getClassByModule('layout-aside')"
+    :class="['layout-aside', configStore.getClassByModule('layout-aside')]"
   >
     <div v-if="showMenu">
       <div>

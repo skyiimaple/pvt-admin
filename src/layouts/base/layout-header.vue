@@ -1,5 +1,5 @@
 <template>
-  <el-header :class="'layout-header ' + configStore.getClassByModule('layout-header')">
+  <el-header :class="['layout-header', configStore.getClassByModule('layout-header')]">
     <the-tab v-if="showTab"></the-tab>
     <template v-else>
       <div class="layout-header-logo">

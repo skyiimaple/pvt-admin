@@ -46,12 +46,14 @@ export const useTabStore = defineStore(
     const removeTab = (tab: TabMenu) => {
       const index = tabs.value.findIndex((item) => item.id === tab.id)
       tabs.value = tabs.value.filter((item) => item.id !== tab.id)
-      try {
-        const preRouter =
-          tabs.value.find((item) => item.id === tab.preActive) || tabs.value[index - 1]
-        router.push(preRouter.path)
-      } catch {
-        router.push('/')
+      if (tab.isActive) {
+        try {
+          const preRouter =
+            tabs.value.find((item) => item.id === tab.preActive) || tabs.value[index - 1]
+          router.push(preRouter.path)
+        } catch {
+          router.push('/')
+        }
       }
     }
     const removeAllTabs = () => {

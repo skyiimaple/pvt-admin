@@ -1,11 +1,11 @@
 <template>
-  <el-container class="tw:w-full tw:h-full tw:p-4">
+  <vxe-layout-container class="tw:w-full tw:h-full tw:p-4 tw:bg-[#f5f5f5]!">
     <layout-aside></layout-aside>
-    <el-container direction="vertical">
+    <vxe-layout-container vertical>
       <layout-header></layout-header>
       <layout-main> </layout-main>
-    </el-container>
-  </el-container>
+    </vxe-layout-container>
+  </vxe-layout-container>
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,8 @@
 <template>
-  <el-aside
+  <vxe-layout-aside
     :width="asideWidth"
-    :class="['layout-aside', configStore.getClassByModule('layout-aside')]"
+    :class="['tw:bg-white', 'layout-aside', configStore.getClassByModule('layout-aside')]"
+    :collapsed="configStore.layout.isCollapse"
   >
     <div v-if="showMenu">
       <div>
@@ -9,7 +10,7 @@
       </div>
       <the-menu></the-menu>
     </div>
-  </el-aside>
+  </vxe-layout-aside>
 </template>
 
 <script setup lang="ts">
@@ -31,7 +32,7 @@ const asideWidth = computed(() => {
 <style lang="scss" scoped>
 .layout-aside {
   transition: width 0.3s ease;
-  background: var(--el-bg-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   &-default {
     margin-right: 16px;
     border-radius: 8px;

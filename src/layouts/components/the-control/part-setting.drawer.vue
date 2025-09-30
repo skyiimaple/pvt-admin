@@ -1,11 +1,20 @@
 <template>
-  <el-drawer v-model="visible" title="设置">
+  <vxe-drawer
+    v-model="visible"
+    title="设置"
+    :width="400"
+    show-footer
+    show-confirm-button
+    show-cancel-button
+    @confirm="confirmClick"
+    @cancel="cancelClick"
+  >
     <div class="tw:pb-4">
       <span>布局设置：</span>
     </div>
     <div class="layout-mode-box-style">
-      <el-row class="layout-mode-box-style-row" :gutter="10">
-        <el-col :span="12">
+      <vxe-row class="layout-mode-box-style-row" :gutter="10">
+        <vxe-col :span="12">
           <div
             @click="setLayoutMode(LayoutEnum.DEFAULT)"
             class="layout-mode-style default"
@@ -20,8 +29,8 @@
             </div>
             <div class="layout-mode-style-name">默认</div>
           </div>
-        </el-col>
-        <el-col :span="12">
+        </vxe-col>
+        <vxe-col :span="12">
           <div
             @click="setLayoutMode(LayoutEnum.CLASSIC)"
             class="layout-mode-style classic"
@@ -36,33 +45,10 @@
             </div>
             <div class="layout-mode-style-name">经典</div>
           </div>
-        </el-col>
-      </el-row>
-      <el-row :gutter="10">
-        <el-col :span="12">
-          <div
-            @click="setLayoutMode(LayoutEnum.LINE)"
-            class="layout-mode-style streamline"
-            :class="layout === LayoutEnum.LINE ? 'active' : ''"
-          >
-            <div class="layout-mode-style-box">
-              <div class="layout-mode-style-container-box">
-                <div class="layout-mode-style-header"></div>
-                <div class="layout-mode-style-container"></div>
-              </div>
-            </div>
-            <div class="layout-mode-style-name">单栏</div>
-          </div>
-        </el-col>
-      </el-row>
+        </vxe-col>
+      </vxe-row>
     </div>
-    <template #footer>
-      <div style="flex: auto">
-        <el-button @click="cancelClick">取消</el-button>
-        <el-button type="primary" @click="confirmClick">确定</el-button>
-      </div>
-    </template>
-  </el-drawer>
+  </vxe-drawer>
 </template>
 
 <script setup lang="ts">
@@ -93,22 +79,22 @@ const setLayoutMode = (mode: LayoutEnum) => {
 .layout-mode-style {
   position: relative;
   height: 100px;
-  border: 1px solid var(--el-border-color-light);
-  border-radius: var(--el-border-radius-small);
+  border: 1px solid var(--vxe-ui-border-color);
+  border-radius: var(--vxe-ui-border-radius);
   &:hover,
   &.active {
-    border: 1px solid var(--el-color-primary);
+    border: 1px solid var(--vxe-ui-font-primary-color);
   }
   .layout-mode-style-name {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--el-color-primary-light-5);
+    color: var(--vxe-ui-font-primary-color);
     border-radius: 50%;
     height: 40px;
     width: 40px;
-    border: 1px solid var(--el-color-primary-light-3);
+    border: 1px solid var(--vxe-ui-font-primary-color);
   }
   .layout-mode-style-box {
     display: flex;
@@ -124,7 +110,7 @@ const setLayoutMode = (mode: LayoutEnum) => {
     .layout-mode-style-aside {
       width: 18%;
       height: 90%;
-      background-color: var(--el-border-color-lighter);
+      background-color: var(--vxe-ui-base-drag-background-color);
     }
     .layout-mode-style-container-box {
       width: 68%;
@@ -133,12 +119,12 @@ const setLayoutMode = (mode: LayoutEnum) => {
       .layout-mode-style-header {
         width: 100%;
         height: 10%;
-        background-color: var(--el-border-color-lighter);
+        background-color: var(--vxe-ui-base-drag-background-color);
       }
       .layout-mode-style-container {
         width: 100%;
         height: 85%;
-        background-color: var(--el-border-color-extra-light);
+        background-color: var(--vxe-ui-base-drag-background-color);
         margin-top: 5%;
       }
     }
@@ -150,7 +136,7 @@ const setLayoutMode = (mode: LayoutEnum) => {
     .layout-mode-style-aside {
       width: 18%;
       height: 100%;
-      background-color: var(--el-border-color-lighter);
+      background-color: var(--vxe-ui-base-drag-background-color);
     }
     .layout-mode-style-container-box {
       width: 82%;
@@ -158,55 +144,12 @@ const setLayoutMode = (mode: LayoutEnum) => {
       .layout-mode-style-header {
         width: 100%;
         height: 10%;
-        background-color: var(--el-border-color);
+        background-color: var(--vxe-ui-font-primary-color);
       }
       .layout-mode-style-container {
         width: 100%;
         height: 90%;
-        background-color: var(--el-border-color-extra-light);
-      }
-    }
-  }
-  &.streamline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .layout-mode-style-container-box {
-      width: 100%;
-      height: 100%;
-      .layout-mode-style-header {
-        width: 100%;
-        height: 10%;
-        background-color: var(--el-border-color);
-      }
-      .layout-mode-style-container {
-        width: 100%;
-        height: 90%;
-        background-color: var(--el-border-color-extra-light);
-      }
-    }
-  }
-  &.double {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .layout-mode-style-aside {
-      width: 18%;
-      height: 100%;
-      background-color: var(--el-border-color);
-    }
-    .layout-mode-style-container-box {
-      width: 82%;
-      height: 100%;
-      .layout-mode-style-header {
-        width: 100%;
-        height: 10%;
-        background-color: var(--el-border-color);
-      }
-      .layout-mode-style-container {
-        width: 100%;
-        height: 90%;
-        background-color: var(--el-border-color-extra-light);
+        background-color: var(--vxe-ui-base-active-background-color);
       }
     }
   }

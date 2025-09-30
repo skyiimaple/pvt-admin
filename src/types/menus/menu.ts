@@ -1,16 +1,16 @@
 export interface Menu {
   id: string
-  path: string
   name: string
-  meta: {
-    title: string
-    icon: string
-  }
+  title: string
+  icon: string
   isActive?: boolean
   from?: string
   children?: Menu[]
+  routerLink?: {
+    name: string
+    query?: Record<string, string>
+  }
 }
-
 
 export interface TabMenu extends Menu {
   preActive: string

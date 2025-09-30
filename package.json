@@ -17,16 +17,18 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.3.2",
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.11.0",
-    "element-plus": "^2.10.7",
+    "dayjs": "^1.11.18",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.5.0",
     "tailwindcss": "^4.1.12",
     "vue": "^3.5.18",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vxe-pc-ui": "~4.9.41",
+    "vxe-table": "~4.16.20",
+    "xe-utils": "~3.7.9"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",

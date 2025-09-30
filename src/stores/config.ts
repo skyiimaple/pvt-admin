@@ -35,7 +35,7 @@ export const useConfigStore = defineStore(
 
     function setIsCollapse(isCollapse: boolean) {
       if (isCollapse) {
-        setSidebarWidth(64)
+        setSidebarWidth(60)
       } else {
         setSidebarWidth(260)
       }

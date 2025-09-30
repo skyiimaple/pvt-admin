@@ -1,12 +1,5 @@
 <script lang="ts">
-import {
-  computed,
-  createVNode,
-  defineComponent,
-  h,
-  resolveComponent,
-  type CSSProperties,
-} from 'vue'
+import { computed, createVNode, defineComponent, type CSSProperties } from 'vue'
 
 export default defineComponent({
   name: 'AppIcon',
@@ -32,21 +25,11 @@ export default defineComponent({
         return { fontSize, color }
       })
       // 图标来源有多种，比如element-plus的icon，font-awesome的icon，自己的icon
-      if (props.name.startsWith('el-')) {
-        return createVNode(
-          'i',
-          {
-            class: 'icon el-icon',
-            style: style.value,
-          },
-          [h(resolveComponent(props.name.replace('el-', '')))],
-        )
-      } else {
-        return createVNode('i', {
-          class: [props.name, 'icon'],
-          style,
-        })
-      }
+
+      return createVNode('i', {
+        class: [props.name, 'icon'],
+        style,
+      })
     }
   },
 })

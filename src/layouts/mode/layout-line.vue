@@ -1,10 +1,10 @@
 <template>
-  <el-container direction="vertical" class="tw:w-full tw:h-full">
+  <vxe-container direction="vertical" class="tw:w-full tw:h-full">
     <layout-header></layout-header>
     <layout-main>
       <slot></slot>
     </layout-main>
-  </el-container>
+  </vxe-container>
 </template>
 
 <script setup lang="ts">

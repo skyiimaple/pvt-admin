@@ -1,4 +1,7 @@
 @import 'tailwindcss' prefix(tw);
+@import 'vxe-pc-ui/es/style.css';
+@import 'vxe-table/es/style.css';
+@import './vxe-ui/menu.scss';
 /* 基本样式 */
 * {
   box-sizing: border-box;
@@ -22,9 +25,8 @@ body,
     SimSun,
     sans-serif;
   font-weight: 400;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  background: var(--el-bg-color-page);
-  color: var(--el-text-color-primary);
-  font-size: var(--el-font-size-base);
+  font-size: var(--vxe-ui-font-size-default);
 }

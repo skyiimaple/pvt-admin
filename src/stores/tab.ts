@@ -18,12 +18,12 @@ export const useTabStore = defineStore(
         const name = (route.name as string) || '404'
         tabs.value.push({
           id: name,
-          path: route.path,
-          name: name,
-          meta: {
-            title: name,
-            icon: name,
+          routerLink: {
+            name: name,
           },
+          name: name,
+          title: name,
+          icon: name,
           preActive: '',
         })
         return
@@ -32,6 +32,7 @@ export const useTabStore = defineStore(
         if (tabs.value.find((item) => item.name === route.name)) {
           return
         }
+        console.log(route)
         const menu = menuStore.menus
           .flatMap((item) => item.children || [])
           .concat(menuStore.menus)
@@ -50,7 +51,7 @@ export const useTabStore = defineStore(
         try {
           const preRouter =
             tabs.value.find((item) => item.id === tab.preActive) || tabs.value[index - 1]
-          router.push(preRouter.path)
+          router.push(preRouter.routerLink?.name || '/')
         } catch {
           router.push('/')
         }

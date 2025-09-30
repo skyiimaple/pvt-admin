@@ -1,9 +1,9 @@
 <template>
-  <el-main :class="['layout-main', configStore.getClassByModule('layout-main')]">
-    <div class="tw:w-full tw:h-full tw:overflow-auto tw:bg-white tw:rounded-md">
+  <vxe-layout-body :class="['layout-body', configStore.getClassByModule('layout-body')]">
+    <div :class="['layout-main']">
       <router-view></router-view>
     </div>
-  </el-main>
+  </vxe-layout-body>
 </template>
 
 <script setup lang="ts">
@@ -13,14 +13,15 @@ const configStore = useConfigStore()
 </script>
 
 <style lang="scss" scoped>
-.layout-main {
-  background: var(--el-bg-color-page);
-  padding: 0;
-  &-default {
-    background: var(--el-bg-color-page);
+.layout-body {
+  background-color: #f5f5f5;
+  .layout-main {
+    height: 100%;
+    overflow: auto;
+    border-radius: 8px !important;
+    background-color: #fff;
   }
-  &-classic,
-  &-double {
+  &-classic {
     padding: 16px;
   }
 }

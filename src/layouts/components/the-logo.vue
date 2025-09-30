@@ -1,20 +1,16 @@
 <template>
   <div :class="'layout-logo ' + configStore.getClassByModule('layout-logo')">
-    <div class="tw:flex tw:items-center" v-if="!configStore.layout.isCollapse">
-      <img class="logo-img" src="@/assets/logo.png" alt="logo" />
+    <div class="tw:flex tw:items-center tw:flex-1" v-if="!configStore.layout.isCollapse">
+      <img class="logo-img" src="@/assets/image/fly.svg" alt="logo" />
       <div class="logo-text">PVT Admin</div>
     </div>
-    <el-button @click="handleCollapse" circle v-if="showFold">
-      <app-icon
-        :name="'el-' + (configStore.layout.isCollapse ? 'Expand' : 'Fold')"
-        color="var(--el-color-primary)"
-      ></app-icon>
-    </el-button>
+    <vxe-button @click="handleCollapse" status="primary" plain circle v-if="showFold">
+      <vxe-icon :name="configStore.layout.isCollapse ? 'menu-unfold' : 'menu-fold'"></vxe-icon>
+    </vxe-button>
   </div>
 </template>
 
 <script setup lang="ts">
-import AppIcon from '@/components/app-icon.vue'
 import { useConfigStore } from '@/stores/config'
 withDefaults(
   defineProps<{
@@ -39,11 +35,7 @@ function handleCollapse() {
   justify-content: space-evenly;
   box-sizing: border-box;
   padding: 10px;
-  background-color: var(--el-fill-color-extra-light);
-  &-line,
-  &-double {
-    background: var(--el-bg-color);
-  }
+  background-color: var(--vxe-ui-font-primary-color);
   .logo-img {
     font-size: 18px;
     height: 34px;
@@ -51,14 +43,13 @@ function handleCollapse() {
   }
   .logo-text {
     display: block;
-    width: 174px;
     padding-left: 4px;
-    font-size: var(--el-font-size-extra-large);
+    font-size: 20px;
     font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: var(--el-color-primary);
+    color: #fff;
   }
 }
 </style>

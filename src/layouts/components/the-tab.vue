@@ -1,20 +1,21 @@
 <template>
   <div class="tw:flex tw:items-center tw:h-full the-tab-container">
-    <el-tag
+    <vxe-tag
       v-for="item in tabStore.tabs"
       :key="item.name"
-      :type="item.isActive ? 'primary' : 'info'"
+      :status="item.isActive ? 'primary' : 'info'"
       :closable="tabStore.tabs.length > 1"
       size="large"
-      :color="
-        !item.isActive && configStore.layout.layoutMode === LayoutEnum.CLASSIC ? '#fff' : undefined
-      "
-      :class="['the-tab', configStore.getClassByModule('the-tab')]"
+      :class="[
+        'the-tab',
+        configStore.getClassByModule('the-tab'),
+        item.isActive ? 'the-tab-active' : 'the-tab-unactive',
+      ]"
       @click="handleClick(item)"
       @close="tabStore.removeTab(item)"
     >
-      {{ item.meta.title }}
-    </el-tag>
+      <span>{{ item.title }}</span>
+    </vxe-tag>
   </div>
 </template>
 
@@ -23,13 +24,12 @@ import { useTabStore } from '@/stores/tab'
 import type { Menu } from '@/types/menus/menu'
 import { useRouter } from 'vue-router'
 import { useConfigStore } from '@/stores/config'
-import { LayoutEnum } from '@/types/layout'
 const router = useRouter()
 const tabStore = useTabStore()
 const configStore = useConfigStore()
 const handleClick = (item: Menu) => {
   router.push({
-    path: item.path,
+    name: item.routerLink?.name,
   })
 }
 </script>
@@ -43,16 +43,27 @@ const handleClick = (item: Menu) => {
     &-default {
       height: 40px;
       border-radius: 8px;
+      &.the-tab-unactive {
+        background-color: #fff;
+      }
       & + .the-tab {
-        margin-left: 4px;
+        margin-left: 8px;
       }
     }
     &-classic {
       border: 0;
       border-radius: 0;
+      & + .the-tab {
+        margin-left: 0px;
+      }
+      &.the-tab-unactive {
+        background-color: #fff;
+      }
     }
     &:hover {
-      color: var(--el-color-primary);
+      span {
+        color: var(--vxe-ui-font-primary-color);
+      }
     }
   }
 }

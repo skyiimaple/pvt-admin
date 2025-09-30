@@ -38,7 +38,8 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import http from '@/core/http'
-import { VxeUI, type VxeFormInstance, type VxeFormPropTypes } from 'vxe-pc-ui'
+import { type VxeFormInstance, type VxeFormPropTypes } from 'vxe-pc-ui'
+import { Message } from '@/core/utils/message'
 const router = useRouter()
 const form = reactive({
   username: 'admin',
@@ -63,7 +64,7 @@ const handleLogin = async () => {
     http
       .post('/api/auth/login', formData)
       .then(() => {
-        VxeUI.modal.message({ content: '登录成功', status: 'success' })
+        Message.success('登录成功')
         loading.value = false
         router.push({ name: 'home' })
       })
